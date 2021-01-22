@@ -69,7 +69,7 @@ export default class AudioMotionAnalyzer {
 
 		const AudioContext = window.AudioContext || window.webkitAudioContext;
 
-		this.trustAudio = options.trustSource || false
+		this.trustAudio = options.trustAudio || false
 
 		if ( options.hasOwnProperty( 'audioCtx' ) ) {
 			if ( this.trustAudio || options.audioCtx instanceof AudioContext )
