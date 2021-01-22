@@ -69,8 +69,10 @@ export default class AudioMotionAnalyzer {
 
 		const AudioContext = window.AudioContext || window.webkitAudioContext;
 
+		this.trustAudio = options.trustSource || false
+
 		if ( options.hasOwnProperty( 'audioCtx' ) ) {
-			if ( options.audioCtx instanceof AudioContext )
+			if ( this.trustAudio || options.audioCtx instanceof AudioContext )
 				this._audioCtx = options.audioCtx;
 			else
 				throw new AudioMotionError( 'ERR_INVALID_AUDIO_CONTEXT', 'Provided audio context is not valid' );
@@ -515,7 +517,7 @@ export default class AudioMotionAnalyzer {
 	connectInput( source ) {
 		const isHTML = source instanceof HTMLMediaElement;
 
-		if ( ! ( isHTML || source instanceof AudioNode ) )
+		if ( ! ( this.trustAudio || isHTML || source instanceof AudioNode ) )
 			throw new AudioMotionError( 'ERR_INVALID_AUDIO_SOURCE', 'Audio source must be an instance of HTMLMediaElement or AudioNode' );
 
 		// if source is an HTML element, create an audio node for it; otherwise, use the provided audio node

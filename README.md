@@ -126,6 +126,7 @@ options = {<br>
 &emsp;&emsp;[splitGradient](#splitgradient-boolean): **false**,<br>
 &emsp;&emsp;[start](#start-boolean): **true**,<br>
 &emsp;&emsp;[stereo](#stereo-boolean): **false**,<br>
+&emsp;&emsp;[trustAudio](#trust-boolean): **false**,<br>
 &emsp;&emsp;[volume](#volume-number): **1**,<br>
 &emsp;&emsp;[width](#width-number): *undefined*<br>
 }
@@ -560,6 +561,15 @@ Notes:
 connected to the analyzer, which will force the mono source to be upmixed to stereo.
 
 See also [`splitGradient`](#splitgradient-boolean).
+
+Defaults to **false**.
+
+### `trustAudio` *boolean*
+
+*Available in fork*
+
+When *true*, audioCtx and source options are not tested to be sure they're valid. 
+Make *true* when using *standardized-audio-context* or other audio library.
 
 Defaults to **false**.
 
